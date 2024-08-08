@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DOM Manipulation Practice</h1>
+        <button class="button" onclick="addElement()">Add Element</button>
+        <button class="button" onclick="changeText()">Change Text</button>
+        <button class="button" onclick="removeElement()">Remove Element</button>
+        <button class="button" onclick="removeAllElements()">Remove All Elements</button>
+
+        <div id="content">
+            <p id="paragraph">This is a paragraph. Click the buttons above to manipulate this content.</p>
+        </div>
+    </div>
+
+    <script>
+        function addElement() {
+            const contentDiv = document.getElementById('content');
+            const newElement = document.createElement('p');
+            newElement.textContent = 'This is a new paragraph added to the content.';
+            contentDiv.appendChild(newElement);
+        }
+
+        function changeText() {
+            const contentDiv = document.getElementById('content');
+            const paragraphs = contentDiv.getElementsByTagName('p');
+            for (let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].textContent = 'The text of this paragraph has been changed!';
+            }
+        }
+
+        function removeElement() {
+            const contentDiv = document.getElementById('content');
+            if (contentDiv.lastChild) {
+                contentDiv.removeChild(contentDiv.lastChild);
+            }
+        }
+
+        function removeAllElements() {
+            const contentDiv = document.getElementById('content');
+            while (contentDiv.firstChild) {
+                contentDiv.removeChild(contentDiv.firstChild);
+            }
+        }
+    </script>
+</body>
+</html>
